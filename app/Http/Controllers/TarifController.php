@@ -15,4 +15,12 @@ class TarifController extends Controller
         // Retourner la vue "tarifs.index" en passant la variable $tarifs
         return view('tarifs.index', compact('tarifs'));
     }
+
+    public function destroy($id)
+    {
+        $tarifs = Tarif::findOrFail($id);
+        $tarifs->delete();
+        return redirect('tarifs')->with('success', 'Tarif deleted successfully.');
+    }
+
 }

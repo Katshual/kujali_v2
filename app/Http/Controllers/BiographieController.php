@@ -15,4 +15,11 @@ class BiographieController extends Controller
         // Retourner la vue "biographies.index" en passant la variable $biographie
         return view('biographies.index', compact('biographies'));
     }
+
+    public function destroy($id)
+{
+    $biographies = Biographie::findOrFail($id);
+    $biographies->delete();
+    return redirect('biographies')->with('success', 'Biographie deleted successfully.');
+}
 }

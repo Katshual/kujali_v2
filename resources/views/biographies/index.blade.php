@@ -13,6 +13,11 @@
         <div>
 
             <p>{{ $biographie->contenu }}</p>
+            <form action="{{ url('biographie/'.$biographie->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit">Delete</button>
+        </form>
         </div>
     @endforeach
 
