@@ -15,4 +15,11 @@ class PrestationController extends Controller
         // Retourner la vue "prestations.index" en passant la variable $tarifs
         return view('prestations.index', compact('prestations'));
     }
+
+    public function destroy($id)
+    {
+        $prestations = Prestation::findOrFail($id);
+        $prestations->delete();
+        return redirect('prestations')->with('success', 'Prestation deleted successfully.');
+    }
 }
