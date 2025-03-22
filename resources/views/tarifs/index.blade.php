@@ -7,4 +7,6 @@
             @method('DELETE')
             <button type="submit">Delete</button>
         </form>
+        <a href="{{ url('tarifs/'.$tarif->id.'/edit') }}" class="btn btn-primary">Modifier</a>
+
 @endforeach
