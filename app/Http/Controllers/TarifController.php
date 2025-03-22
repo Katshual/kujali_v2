@@ -22,5 +22,28 @@ class TarifController extends Controller
         $tarifs->delete();
         return redirect('tarifs')->with('success', 'Tarif deleted successfully.');
     }
+   // Méthode pour afficher le formulaire de modification
+   public function edit($id)
+   {
+       $tarifs = Tarif::findOrFail($id);
+       return view('tarifs.edit', compact('tarifs'));
+   }
+
+     // Méthode pour appliquer les changements
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'titre' => 'required|string|max:255',
+            'prix' => 'nullable|string',
+        ]);
+
+        $tarifs = Tarif::findOrFail($id);
+        $tarifs->update([
+            'titre' => $request->titre,
+            'prix' => $request->prix,
+        ]);
+
+        return redirect()->route('tarifs.index')->with('success', 'Tarif mis à jour avec succès');
+    }
 
 }
