@@ -28,3 +28,7 @@ Route::get('/biographie', [BiographieController::class, 'index'])->name('biograp
 Route::delete('biographie', [BiographieController::class, 'destroy']);
 Route::get('biographie/{biographie}/edit', [BiographieController::class, 'edit'])->name('biographie.edit');
 Route::put('biographie/{biographie}', [BiographieController::class, 'update'])->name('biographie.update');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
