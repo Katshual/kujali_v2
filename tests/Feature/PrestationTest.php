@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
-
+use App\Models\Prestation;
 class PrestationTest extends TestCase
 {
     use RefreshDatabase;
@@ -18,7 +18,7 @@ class PrestationTest extends TestCase
             'description' => 'Massage relaxant',
         ]);
 
-        $this->put(route('prestations.update', $prestation), [
+        $this->put(route('prestations.update', $prestation->id), [
             'nom' => 'Massage Energétique',
             'description' => 'Revitalisant',
         ]);
